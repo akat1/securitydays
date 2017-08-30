@@ -1,0 +1,14 @@
+<HTML><HEAD><TITLE>Index of /admin/sys/config/</TITLE></HEAD>
+<BODY BGCOLOR="#99cc99" TEXT="#000000" LINK="#2020ff" VLINK="#4040cc">
+<H2>Index of /admin/sys/config/</H2>
+<PRE>
+mode name
+<HR>
+dr-x <A HREF="./">.</A>/
+dr-x <A HREF="../">..</A>/
+-r-x <A HREF="genpass">genpass</A>
+-r-x <A HREF="gen.sh">gen.sh</A>
+-r-x <A HREF="motd">motd</A>
+-r-x <A HREF="passwd">passwd</A>
+-r-x <A HREF="pool">pool</A>
+</PRE></BODY></HTML>

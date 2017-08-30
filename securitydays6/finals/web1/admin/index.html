@@ -1,0 +1,49 @@
+<?php
+	include("./4dm-n0n-0bv1ous/admin.inc");
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Wirtualna firma Top$ecurity - Turniej SECURITY DAYS 6 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+.style1 {font-size: small}
+.style2 {color: #FF0000}
+A:link          { COLOR: gray; TEXT-DECORATION: none; }
+A:visited       { COLOR: gray; TEXT-DECORATION: none; }
+A:active        { COLOR: black; TEXT-DECORATION: none; }
+A:hover         { color: black; TEXT-DECORATION: none;}
+-->
+</style>
+</head>
+<body style="padding: 0px; margin: 0px; background: #ffffff; font-family: verdana,times; font-size: small">
+
+<?php
+	$admin = 0;
+	$err = 0;
+	if (isset($_POST['user']) and isset($_POST['pass'])) {
+		$user = $_POST['user'];
+		$pass = md5($_POST['pass']);
+		if ($user == $adminuser and $pass == $adminpass) {
+			$admin = 1;
+		} else {
+			$err = 1;
+		}
+
+		if ($admin == 1) {
+			include("./4dm-n0n-0bv1ous/admin.php");
+		}
+	}
+
+	if ($admin == 0) {
+		include("form.html");
+	}
+
+	if ($err == 1) {
+		include("login-err.html");
+	}
+?>
+
+</body>
+</html>

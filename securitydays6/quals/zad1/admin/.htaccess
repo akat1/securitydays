@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Panel administracyjny"
+AuthUserFile /var/www/zad1/admin/.htpasswd
+Require valid-user

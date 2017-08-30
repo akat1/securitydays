@@ -1,0 +1,46 @@
+<?php
+	ini_set("display_errors", "off");
+
+	include("./includ3/up.html");
+	include("./includ3/menu.html");
+	include("./includ3/db.php");
+
+	if (isset($_GET['dzial'])) {
+		$dzial = $_GET['dzial'];
+		$dzial = addslashes(stripslashes($dzial));
+	} else {
+		$dzial = 1;
+	}
+
+	$link = db_connect();
+	mysql_query("SET sql_select_limit = 10;");
+	mysql_query("SET max_join_size = 12;");
+	$query = "SELECT * FROM sctPages WHERE id = $dzial;";
+	$query = str_ireplace("sleep", "", $query);
+	$query = str_ireplace("benchmark", "", $query);
+
+	//queries logging
+	//$file = fopen("./includ3/queries.txt", "a");
+	//fputs($file, $query."\n");
+	//fclose($file);
+
+	#debug mode
+	#echo "\n$query\n";
+
+	$result = mysql_query($query);
+	mysql_close($link);
+
+	if (mysql_num_rows($result) == 1) {
+		$row = mysql_fetch_assoc($result);
+		if (strstr($row['content'], "<tr>")) {
+			echo $row['content'];
+		} else {
+			// sux massive
+			echo "\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t".$row['content']."\n\t\t\t\t</td>\n\t\t\t</tr>\n";
+		}
+	} else {
+		include("./includ3/err.html");
+	}
+
+	include("./includ3/down.html");
+?>

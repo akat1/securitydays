@@ -1,0 +1,15 @@
+Remote Task #1
+
+Task:
+Log into service
+
+permissions:
+-rwxr--r--  1 root root  713 2008-09-18 16:52 auth.c
+-rwx--x---  1 root bok  7980 2008-09-18 16:53 bok
+-rwx------  1 root root 4488 2008-09-18 16:23 bok.c
+-rwx------  1 root root 7576 2008-09-18 16:22 bok.h
+-rwx------  1 root root 2032 2008-09-18 16:22 config.h
+-rw-r--r--  1 root root   45 2008-09-22 12:53 README
+
+/etc/inetd.conf:
+6000	stream	tcp nowait bok /home/bok/bok bok

@@ -1,0 +1,9 @@
+platform =
+{"FreeBSD"}
+db =
+{"db.ts.sec"}
+crypt =
+{"yes"}
+user = 
+{ [nobody|], [admin|SDUUUS1VgA4PU] }
+

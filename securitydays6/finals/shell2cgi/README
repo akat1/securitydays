@@ -1,0 +1,14 @@
+Shell Task #2
+
+task:
+
+Read contents of secret file.
+
+permissions:
+
+-rwsr-xr-x  1 shell2cgi shell2cgi 10037 2008-09-18 11:05 auth
+-rw-r--r--  1 shell2cgi shell2cgi  1204 2008-09-18 11:05 auth.c
+-rw-r--r--  1 shell2cgi shell2cgi   435 2008-09-17 17:47 fortunes
+-r--------  1 shell2cgi shell2cgi    15 2008-09-17 17:47 pass
+-r--------  1 shell2cgi shell2cgi    54 2008-09-17 17:48 secret
+

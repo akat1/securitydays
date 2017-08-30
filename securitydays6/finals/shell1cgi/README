@@ -1,0 +1,14 @@
+Shell Task #1
+
+task:
+read data from secret.html
+
+permissions:
+
+-rw-------  1 shell1cgi shell1cgi   50 2008-09-10 18:58 .passwd
+-rw-------  1 shell1cgi shell1cgi   40 2008-09-10 19:51 secret.html
+-rwsr-xr-x  1 shell1cgi shell1cgi 9558 2008-09-10 20:45 showPage
+-rw-r--r--  1 shell1cgi shell1cgi 1796 2008-09-10 20:45 showPage.c
+
+credits:
+Idea has been taken from intruded.net

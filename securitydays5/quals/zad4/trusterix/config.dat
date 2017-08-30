@@ -1,0 +1,25 @@
+# truserix - config file
+# trusterix (c) by Top$ecurity
+#
+
+# admin name
+admin = "Marcin Niedoceniany"
+
+# organization
+org = "TopSecurity"
+
+# password format
+# 
+# dec - eg. 0932321111332
+# hex - eg. feedbabe
+
+passwordFormat = hex
+
+ntpupdate = off
+ntpserver = ntp.topsecurity.sec
+port = 60019
+
+rootdir = trusterix/
+
+system = linux
+

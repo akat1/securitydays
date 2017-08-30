@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /gfx/
+Disallow: /kontakt/
+# Disallow: /database/

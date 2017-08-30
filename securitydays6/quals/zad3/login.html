@@ -1,0 +1,99 @@
+<?php
+	ini_set("display_errors", "Off");
+
+	include("./includ3/db.php");
+
+	$zalogowany = 0;
+	$err = 0;
+	if (isset($_COOKIE['id']) and isset($_COOKIE['user']) and isset($_COOKIE['pass'])) {
+		$id = (int) $_COOKIE['id'];
+
+		$username = $_COOKIE['user'];
+		$user = addslashes(stripslashes($username));
+
+		$pass = $_COOKIE['pass'];
+		$pass = addslashes(stripslashes($pass));
+
+		$link = db_connect();
+		$query = "SELECT * FROM sctUsers WHERE id = $id AND name = '$user' AND password = '$pass';";
+		$result = mysql_query($query);
+		mysql_close($link);
+
+		if (mysql_num_rows($result) == 1) {
+			$zalogowany = 1;
+		}
+	}
+
+	if ($zalogowany == 0) {
+		if (isset($_POST['user']) and isset($_POST['pass'])) {
+			$username = $_POST['user'];
+			$user = addslashes(stripslashes($username));
+
+			$pass = $_POST['pass'];
+			$pass = addslashes(stripslashes($pass));
+
+			$link = db_connect();
+			$query = "SELECT * FROM sctUsers WHERE name = '$user' AND password = MD5('$pass');";
+			$result = mysql_query($query);
+			mysql_close($link);
+
+			if (mysql_num_rows($result) == 1) {
+				$zalogowany = 1;
+				$row = mysql_fetch_assoc($result);
+				setcookie("id", $row['id']);
+				setcookie("user", $row['name']);
+				setcookie("pass", $row['password']);
+			} else {
+				$err = 1;
+			}
+		}
+	}
+
+
+	if ($zalogowany == 1) {
+		if (isset($_GET['action']) and $_GET['action'] == "logout") {
+			setcookie("id", "null");
+			setcookie("user", "null");
+			setcookie("pass", "null");
+			header("Location: index.html");
+			die();
+		}
+
+		include("./includ3/up.html");
+		include("./includ3/menu-panel.html");
+
+		if (strcmp($username, "admin") == 0) {
+			include("./includ3/congratz.html");
+		} else {
+			$action = $_GET['action'];
+			switch ($action) {
+				case "pref" :
+					include("./includ3/panel-pref.html");
+					break;
+				case "help" :
+					include("./includ3/panel-help.html");
+					break;
+				default :
+					$action = "main";
+					break;
+			}
+
+			if ($action == "main") {
+				// sux massive
+				echo "\t\t\t<tr>\n\t\t\t\t<td style=\"padding-left: 5px;\" align=\"left\">\n\t\t\t\t";
+				echo "<br><br>Witaj <b>$username</b>,<br><br>\n";
+				include("./includ3/intro.html");
+				echo "\n\t\t\t\t</td>\n\t\t\t</tr>\n";
+			}
+		}
+	} else {
+		include("./includ3/up.html");
+		include("./includ3/menu.html");
+		include("./includ3/login.html");
+		if ($err == 1) {
+			include("./includ3/login-err.html");
+		}
+	}
+
+	include("./includ3/down.html");
+?>

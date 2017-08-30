@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Statystyki"
+AuthUserFile /var/www/web1/stats/.htpasswd
+Require valid-user
